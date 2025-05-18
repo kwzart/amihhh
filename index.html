@@ -1,18 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Moment</title>
+  <title>moment</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f7c6c7, #c6b4f7);
       color: #3a3a3a;
       text-align: center;
       display: flex;
@@ -24,27 +22,14 @@
       position: relative;
     }
 
-    #videoBackground {
-      position: fixed;
-      top: 0;
-      left: 0;
-      min-width: 100vw;
-      min-height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      filter: brightness(0.5) blur(2px);
-    }
-
     #kontenAwal, #kontrolSetelahVideo {
       z-index: 2;
-      animation: fadeInUp 1s ease forwards;
     }
 
     h1 {
       font-size: 2.8em;
       color: #9b1d20;
       margin-bottom: 20px;
-      animation: fadeInUp 1.2s ease forwards;
     }
 
     p {
@@ -52,7 +37,6 @@
       max-width: 700px;
       margin: 0 auto 30px;
       line-height: 1.5;
-      animation: fadeInUp 1.5s ease forwards;
     }
 
     .btn {
@@ -64,15 +48,13 @@
       border-radius: 8px;
       cursor: pointer;
       margin: 10px;
-      transition: all 0.3s ease;
+      transition: background-color 0.3s ease;
       text-decoration: none;
       display: inline-block;
-      animation: fadeIn 2s ease forwards;
     }
 
     .btn:hover {
       background-color: #8e2c38;
-      transform: scale(1.05);
     }
 
     #videoContainer {
@@ -83,7 +65,6 @@
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 3;
     }
 
     video {
@@ -100,31 +81,9 @@
       width: 100%;
       text-align: center;
     }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
   </style>
 </head>
 <body>
-
-  <!-- Background Video Bertema Patah Hati -->
-  <video autoplay muted loop id="videoBackground">
-    <source src="https://cdn.pixabay.com/video/2023/05/30/167403-829517820_large.mp4" type="video/mp4">
-    Browser Anda tidak mendukung video background.
-  </video>
 
   <!-- Efek Suara Hujan -->
   <audio id="hujanAudio" loop autoplay>
@@ -158,13 +117,11 @@
   <script>
     const video = document.getElementById("videoPerpisahan");
     const hujanAudio = document.getElementById("hujanAudio");
-    const videoBg = document.getElementById("videoBackground");
 
     function putarVideo() {
       document.getElementById("kontenAwal").style.display = "none";
       document.getElementById("kontrolSetelahVideo").style.display = "none";
       document.getElementById("videoContainer").style.display = "block";
-      videoBg.style.display = "none"; // Sembunyikan wallpaper live saat video kenangan dimulai
       document.body.style.background = "black";
       hujanAudio.pause();
       video.currentTime = 0;
